@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Online | GoodBite Kitchen</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;color:#173653;background:linear-gradient(135deg,#ffe2e7 0%,#e1f1ff 48%,#fff0bd 100%)}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:20px 7%}
+.logo{font-size:22px;font-weight:bold;color:#155da5;text-decoration:none}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a,.nav button{font:inherit;font-weight:bold;color:#155da5;text-decoration:none;background:white;border:1px solid #b9d4ed;border-radius:22px;padding:11px 16px;cursor:pointer}
+main{width:min(1100px,92%);margin:28px auto 48px}
+.hero{padding:clamp(24px,4vw,40px);background:#ffffffdf;border:1px solid #ffffff;border-radius:26px;box-shadow:0 16px 40px #17365314;text-align:center}
+.kicker{display:inline-block;padding:8px 12px;border-radius:20px;background:#ffebee;color:#c6283c;font-size:13px;font-weight:bold}
+h1{font-size:clamp(30px,5vw,44px);color:#155da5;margin:16px 0 10px}
+.intro{max-width:760px;margin:0 auto;color:#526b83;line-height:1.7;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}
+.card{background:#ffffffed;border:1px solid #d6eaff;border-radius:22px;padding:24px;box-shadow:0 10px 26px #155da510;display:flex;flex-direction:column}
+.app-icon{width:62px;height:62px;display:flex;align-items:center;justify-content:center;font-size:34px;border-radius:18px;background:#f1f7ff;margin-bottom:14px}
+h2{margin:0 0 8px;color:#155da5;font-size:23px}
+.tag{display:inline-block;align-self:flex-start;padding:5px 9px;background:#fff0f1;color:#b4232e;border-radius:15px;font-size:12px;font-weight:bold;margin-bottom:10px}
+.card p{color:#526b83;line-height:1.6;margin:0 0 18px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto}
+.action{display:inline-block;padding:11px 14px;border-radius:20px;text-decoration:none;font-weight:bold;font-size:14px;background:linear-gradient(110deg,#e53945,#1769aa);color:white}
+.action.secondary{background:white;border:1px solid #b9d4ed;color:#155da5}
+.note{margin-top:22px;padding:15px 17px;border-radius:14px;background:#f1f7ff;color:#315779;line-height:1.6}
+footer{text-align:center;color:#627b93;padding:0 15px 25px}
+@media(max-width:650px){header{padding:16px 5%}.logo{font-size:18px}.grid{grid-template-columns:1fr}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="welcome.html">🍴 GoodBite Kitchen</a>
+  <nav class="nav" aria-label="Order page navigation">
+    <a href="welcome.html">← Back to Welcome / Food Choices</a>
+    <a href="index.html">Homepage</a>
+    <button type="button" id="back-button">← Back</button>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <span class="kicker">🛵 ORDER ONLINE</span>
+    <h1>Choose a Food Ordering App</h1>
+    <p class="intro">Explore these food-ordering services. Select “Download App” to open its Google Play listing, or use its website to check menus and availability. Delivery coverage, prices, and offers depend on your location.</p>
+  </section>
+
+  <section class="grid" aria-label="Food ordering apps">
+    <article class="card">
+      <div class="app-icon" aria-hidden="true">🍽️</div>
+      <span class="tag">Multi-restaurant ordering</span>
+      <h2>Zomato</h2>
+      <p>Browse restaurants, cuisines, menus, ratings, and food delivery options in supported locations.</p>
+      <div class="actions">
+        <a class="action" href="https://play.google.com/store/apps/details?id=com.application.zomato" target="_blank" rel="noopener noreferrer">Download App</a>
+        <a class="action secondary" href="https://www.zomato.com/" target="_blank" rel="noopener noreferrer">Open Website</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="app-icon" aria-hidden="true">🛵</div>
+      <span class="tag">Food + other delivery services</span>
+      <h2>Swiggy</h2>
+      <p>Order meals from participating restaurants and explore available delivery services in your city.</p>
+      <div class="actions">
+        <a class="action" href="https://play.google.com/store/apps/details?id=in.swiggy.android" target="_blank" rel="noopener noreferrer">Download App</a>
+        <a class="action secondary" href="https://www.swiggy.com/" target="_blank" rel="noopener noreferrer">Open Website</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="app-icon" aria-hidden="true">🍔</div>
+      <span class="tag">Multiple food brands</span>
+      <h2>EatSure</h2>
+      <p>Explore meals from several participating food brands through one ordering service.</p>
+      <div class="actions">
+        <a class="action" href="https://play.google.com/store/apps/details?id=com.done.faasos" target="_blank" rel="noopener noreferrer">Download App</a>
+        <a class="action secondary" href="https://www.eatsure.com/" target="_blank" rel="noopener noreferrer">Open Website</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="app-icon" aria-hidden="true">🍕</div>
+      <span class="tag">Pizza and sides</span>
+      <h2>Domino’s Pizza</h2>
+      <p>View pizza menus, sides, combos, offers, and delivery options from participating Domino’s outlets.</p>
+      <div class="actions">
+        <a class="action" href="https://play.google.com/store/apps/details?id=com.Dominos" target="_blank" rel="noopener noreferrer">Download App</a>
+        <a class="action secondary" href="https://www.dominos.co.in/" target="_blank" rel="noopener noreferrer">Open Website</a>
+      </div>
+    </article>
+  </section>
+
+  <aside class="note">
+    <strong>Before ordering:</strong> Check the delivery address, restaurant availability, delivery fee, total price, and estimated delivery time in the app. Only install apps from their official app-store listings.
+  </aside>
+</main>
+<footer>Good food. Happy hearts. © GoodBite Kitchen</footer>
+<script>
+document.getElementById('back-button').addEventListener('click',function(){
+  if(history.length>1) history.back(); else location.href='welcome.html';
+});
+</script>
+</body>
+</html>

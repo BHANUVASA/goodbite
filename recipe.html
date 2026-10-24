@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Cook | GoodBite Kitchen</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;color:#173653;background:linear-gradient(135deg,#ffe2e7 0%,#e1f1ff 48%,#fff0bd 100%)}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:20px 7%}
+.logo{font-size:22px;font-weight:bold;color:#155da5;text-decoration:none}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a,.nav button{font:inherit;font-weight:bold;color:#155da5;text-decoration:none;background:white;border:1px solid #b9d4ed;border-radius:22px;padding:11px 16px;cursor:pointer}
+main{width:min(900px,92%);margin:30px auto 50px}
+.panel{background:#ffffffdf;border:1px solid #d6eaff;border-radius:28px;padding:clamp(22px,5vw,44px);box-shadow:0 18px 45px #17365318}
+.kicker{display:inline-block;padding:8px 12px;border-radius:20px;background:#ffebee;color:#c6283c;font-size:13px;font-weight:bold}
+h1{color:#155da5;font-size:clamp(30px,5vw,46px);margin:16px 0 10px}
+.intro{font-size:17px;line-height:1.7;color:#526b83}
+.bot{margin-top:24px;padding:24px;background:#fff;border:1px solid #d6eaff;border-radius:20px;box-shadow:0 8px 24px #155da510}
+.bot h2{margin:0 0 8px;color:#155da5}
+.bot p{color:#526b83;line-height:1.6}
+form{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+input{flex:1 1 240px;min-width:0;padding:14px;border:1px solid #c8d8e8;border-radius:10px;font:inherit}
+.submit{padding:14px 20px;border:0;border-radius:10px;color:#fff;font-weight:bold;font-size:15px;background:linear-gradient(110deg,#e53945,#1769aa);cursor:pointer}
+.suggestions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.suggestions button{border:1px solid #b9d4ed;background:white;color:#155da5;border-radius:20px;padding:9px 13px;cursor:pointer}
+.message{margin-top:14px!important;padding:13px;border-radius:10px;background:#f1f7ff;color:#244d76!important}
+footer{text-align:center;color:#627b93;padding:0 15px 25px}
+@media(max-width:600px){header{padding:16px 5%}.logo{font-size:18px}form{flex-direction:column}.submit{width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="welcome.html">🍴 GoodBite Kitchen</a>
+  <nav class="nav" aria-label="Recipe navigation">
+    <a href="welcome.html">← Back to Welcome / Food Choices</a>
+    <a href="index.html">Homepage</a>
+    <button type="button" id="back-button">← Back</button>
+  </nav>
+</header>
+<main>
+  <section class="panel">
+    <span class="kicker">👨‍🍳 LET'S COOK</span>
+    <h1>GoodBite Recipe Assistant</h1>
+    <p class="intro">Tell us which dish you want to make. Search Google for ingredients, preparation steps, and cooking tips.</p>
+    <section class="bot" aria-label="Recipe search chatbot">
+      <h2>What would you like to cook today?</h2>
+      <p>Enter a dish name or choose a popular suggestion below.</p>
+      <form id="recipe-form">
+        <input id="dish" type="text" maxlength="120" placeholder="e.g., chicken biryani, dosa, pasta" aria-label="Dish you want to cook" required>
+        <button class="submit" type="submit">Find Recipe</button>
+      </form>
+      <div class="suggestions" aria-label="Popular dishes">
+        <button type="button" data-dish="Vegetable biryani">Vegetable biryani</button>
+        <button type="button" data-dish="Masala dosa">Masala dosa</button>
+        <button type="button" data-dish="Paneer butter masala">Paneer butter masala</button>
+        <button type="button" data-dish="Chicken biryani">Chicken biryani</button>
+      </div>
+      <p class="message" id="message" aria-live="polite">Assistant: Enter a dish name or choose a suggestion. A results page will open with a Google search link and a button to return here for another dish.</p>
+    </section>
+  </section>
+</main>
+<footer>Good food. Happy hearts. © GoodBite Kitchen</footer>
+<script>
+(function(){
+ const input=document.getElementById('dish');
+ const message=document.getElementById('message');
+ function searchRecipe(dish){
+   const q=dish.trim();
+   if(!q){message.textContent='Please enter a dish name first.';input.focus();return;}
+   message.textContent='Opening Google results for "'+q+'" with ingredients and preparation steps…';
+   const url='https://www.google.com/search?q='+encodeURIComponent(q+' recipe ingredients step by step preparation');
+   window.open(url,'_blank','noopener');
+ }
+ document.getElementById('recipe-form').addEventListener('submit',function(e){e.preventDefault();searchRecipe(input.value);});
+ document.querySelectorAll('[data-dish]').forEach(function(button){button.addEventListener('click',function(){input.value=button.dataset.dish;searchRecipe(button.dataset.dish);});});
+ document.getElementById('back-button').addEventListener('click',function(){if(history.length>1)history.back();else location.href='welcome.html';});
+})();
+</script>
+</body>
+</html>
